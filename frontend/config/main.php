@@ -31,7 +31,7 @@ return [
                 'domain' => $params['cookieDomain'],
                 'httpOnly' => true,
             ],
-            'name' => 'advanced',
+            'name' => '_session',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -45,7 +45,7 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'frontendUrlManager' => require __DIR__ . ' /urlManager.php',
+        'frontendUrlManager' => require __DIR__ . '/urlManager.php',
         'backendUrlManager' => require __DIR__ . '/../../backend/config/urlManager.php',
         'urlManager' => function (){
             return Yii::$app->get('frontendUrlManager');

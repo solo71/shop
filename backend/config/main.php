@@ -46,10 +46,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'backendUrlManager' => require __DIR__ . ' /urlManager.php',
+        'backendUrlManager' => require __DIR__ . '/urlManager.php',
         'frontendUrlManager' => require __DIR__ . '/../../frontend/config/urlManager.php',
         'urlManager' => function (){
-            return Yii::$app->get('backendUrlManager');
+            return Yii::$app -> get('backendUrlManager');
         },
     ],
     'as access' => [
