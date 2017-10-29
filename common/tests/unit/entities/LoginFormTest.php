@@ -4,7 +4,7 @@ namespace common\tests\unit\entities;
 
 use Yii;
 use common;
-//use common\forms\LoginForm;
+use common\forms\LoginForm;
 use common\fixtures\UserFixture as UserFixture;
 
 /**

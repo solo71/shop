@@ -2,8 +2,8 @@
 
 namespace frontend\services\auth;
 
-use common\models\User;
-use frontend\models\SignupForm;
+use common\entities\User;
+use frontend\forms\SignupForm;
 
 class SignupService
 {

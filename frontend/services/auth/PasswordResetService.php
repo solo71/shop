@@ -2,9 +2,10 @@
 namespace frontend\services\auth;
 
 
-use common\models\User;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
+use common\entities\User;
+use frontend\forms\PasswordResetRequestForm;
+use frontend\forms\ResetPasswordForm;
+use Yii;
 
 class PasswordResetService
 {
