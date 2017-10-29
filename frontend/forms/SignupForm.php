@@ -2,7 +2,7 @@
 namespace frontend\forms;
 
 use yii\base\Model;
-use common\models\User;
+use common\entities\User;
 
 /**
  * Signup form
