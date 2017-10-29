@@ -1,5 +1,5 @@
 <?php
-namespace frontend\tests\unit\models;
+namespace frontend\tests\unit\forms;
 
 use common\fixtures\UserFixture;
 use frontend\models\SignupForm;

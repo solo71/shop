@@ -23,9 +23,27 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    use InstantiateTrait;
+
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
+    public static function signup(string $username, string $email, string $password)
+    {
+        $user = new static();
+        $user->username = $username;
+        $user->email = $email;
+        $user->setPassword($password);
+        $user->created_at = time();
+        $user->status = self::STATUS_ACTIVE;
+        $user->generateAuthKey();
+        return $user;
+    }
+
+    public function isActive():bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
+    }
 
     /**
      * @inheritdoc
