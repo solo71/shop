@@ -1,10 +1,9 @@
 <?php
 namespace frontend\forms;
 
-use Yii;
 use yii\base\Model;
 use common\entities\User;
-use common\forms\LoginForm;
+use frontend\services\auth\PasswordResetService;
 
 
 /**
@@ -15,9 +14,6 @@ class PasswordResetRequestForm extends Model
     public $email;
 
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -67,4 +63,5 @@ class PasswordResetRequestForm extends Model
             ->setSubject('Password reset for ' . Yii::$app->name)
             ->send();
     }*/
+
 }
