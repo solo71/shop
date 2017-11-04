@@ -12,7 +12,8 @@ class SetUp implements BootstrapInterface
         // TODO: Implement bootstrap() method.
         $container = \Yii::$container;
         $container->setSingleton(PasswordResetService::class, [], [
-            [$app->params['supportEmail'] => $app->name . ' robot']
+            [$app->params['supportEmail'] => $app->name . ' robot'],
+            $app->mailer
         ]);
     }
 }
