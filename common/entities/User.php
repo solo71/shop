@@ -41,7 +41,7 @@ class User extends ActiveRecord implements IdentityInterface
         $user->setPassword($password);
         $user->created_at = time();
         $user->status = self::STATUS_WAIT;
-        $user->generateEmailConfirmToken();
+        $user->email_confirm_token = Yii::$app->security->generateRandomString();
         $user->generateAuthKey();
         return $user;
     }
@@ -213,7 +213,7 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @param string $password
      */
-    public function setPassword($password)
+    private function setPassword($password)
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
@@ -221,7 +221,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Generates "remember me" authentication key
      */
-    public function generateAuthKey()
+    private function generateAuthKey()
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
@@ -229,7 +229,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Generates new password reset token
      */
-    public function generatePasswordResetToken()
+    private function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
@@ -237,12 +237,12 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Removes password reset token
      */
-    public function removePasswordResetToken()
+    private function removePasswordResetToken()
     {
         $this->password_reset_token = null;
     }
 
-    public function generateEmailConfirmToken()
+    private function generateEmailConfirmToken()
     {
         $this->email_confirm_token = Yii::$app->security->generateRandomString();
     }
@@ -250,7 +250,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Removes password reset token
      */
-    public function removeEmailConfirmToken()
+    private function removeEmailConfirmToken()
     {
         $this->email_confirm_token = null;
     }
