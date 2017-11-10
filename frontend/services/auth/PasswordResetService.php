@@ -10,6 +10,12 @@ use yii\mail\MailerInterface;
 
 class PasswordResetService
 {
+    private $mailer;
+
+    public function __construct(MailerInterface $mailer)
+    {
+        $this->mailer = $mailer;
+    }
 
     public function request(PasswordResetRequestForm $form): void
     {
