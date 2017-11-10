@@ -135,7 +135,7 @@ class SiteController extends Controller
         $form = new ContactForm();
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
-                $this->contactService->send('$form');
+                $this->contactService->send($form);
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
                 return $this->goHome();
 
