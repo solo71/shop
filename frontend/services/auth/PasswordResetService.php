@@ -53,16 +53,17 @@ class PasswordResetService
         }
     }
 
-    public function reset(string $token, ResetPasswordForm $form): void
-    {
-        $user =$this->users->getByPasswordResetToken($token);
-        $user->resetPassword($form->password);
-        $this->users->save($user);
-    }
 }
 
 class UserRepository
 {
+    public function reset(string $token, ResetPasswordForm $form): void
+    {
+        $user =$this->getByPasswordResetToken($token);
+        $user->resetPassword($form->password);
+        $this->save($user);
+    }
+
     public function getByEmail(string $email): User
     {
         if (!$user=User::findOne(['email'=>$email])){
